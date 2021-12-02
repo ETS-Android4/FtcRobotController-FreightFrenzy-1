@@ -1,3 +1,4 @@
+include ':RoadrunnerTrajectories'
 include ':openCVLibrary343'
 include ':FtcRobotController'
 include ':TeamCode'
