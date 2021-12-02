@@ -1,17 +1,9 @@
-package org.firstinspires.ftc.teamcode.drive.autonomous.opmodes;
+package org.firstinspires.ftc.teamcode.drive.autonomous.opmodes2021;
 
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.acmerobotics.roadrunner.geometry.Vector2d;
 import com.acmerobotics.roadrunner.trajectory.Trajectory;
-import com.acmerobotics.roadrunner.trajectory.TrajectoryBuilder;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-
-import org.opencv.core.Mat;
-
-import java.util.ArrayList;
-
-import static java.lang.Math.atan;
 
 @Autonomous
 public class ComplexSplineDemo extends Autonomous2021 {

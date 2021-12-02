@@ -1,13 +1,12 @@
-package org.firstinspires.ftc.teamcode.drive.autonomous.opmodes;
+package org.firstinspires.ftc.teamcode.drive.autonomous.opmodes2021;
 
 import com.acmerobotics.roadrunner.trajectory.Trajectory;
-import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 import java.util.ArrayList;
 
 import static java.lang.Math.atan;
 
-    @Autonomous(name = "WobbleGoalAndShoot")
+//    @Autonomous(name = "WobbleGoalAndShoot")
     public class WobbleGoalAndShoot extends Autonomous2021{
 
         @Override

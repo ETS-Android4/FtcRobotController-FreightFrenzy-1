@@ -1,14 +1,11 @@
-package org.firstinspires.ftc.teamcode.drive.autonomous.opmodes;
+package org.firstinspires.ftc.teamcode.drive.autonomous.opmodes2021;
 
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.acmerobotics.roadrunner.trajectory.Trajectory;
-import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 import java.util.ArrayList;
 
-import static java.lang.Math.atan;
-
-@Autonomous
+//@Autonomous
 public class PowershotPreload extends Autonomous2021{
 
     @Override

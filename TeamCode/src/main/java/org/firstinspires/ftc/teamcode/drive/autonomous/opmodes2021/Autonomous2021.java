@@ -1,43 +1,29 @@
-package org.firstinspires.ftc.teamcode.drive.autonomous.opmodes;
+package org.firstinspires.ftc.teamcode.drive.autonomous.opmodes2021;
 
 import com.acmerobotics.dashboard.config.Config;
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.acmerobotics.roadrunner.geometry.Vector2d;
-import com.acmerobotics.roadrunner.profile.VelocityConstraint;
 import com.acmerobotics.roadrunner.trajectory.Trajectory;
 
 import com.acmerobotics.roadrunner.trajectory.TrajectoryBuilder;
-import com.acmerobotics.roadrunner.trajectory.constraints.AngularVelocityConstraint;
-import com.acmerobotics.roadrunner.trajectory.constraints.MecanumVelocityConstraint;
-import com.acmerobotics.roadrunner.trajectory.constraints.MinVelocityConstraint;
-import com.acmerobotics.roadrunner.trajectory.constraints.ProfileAccelerationConstraint;
-import com.acmerobotics.roadrunner.trajectory.constraints.TrajectoryVelocityConstraint;
-import com.acmerobotics.roadrunner.util.MathUtil;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.Servo;
 
-import org.firstinspires.ftc.teamcode.drive.DriveConstants;
 import org.firstinspires.ftc.teamcode.drive.MecanumDrivetrain;
 import org.firstinspires.ftc.teamcode.opencv.OpenCVHelper;
-import org.firstinspires.ftc.teamcode.opencv.RingDetector;
 import org.firstinspires.ftc.teamcode.opencv.UltimateGoalCVHelper;
-import org.opencv.core.Mat;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 
-import static org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer.CameraDirection.BACK;
 import static org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer.CameraDirection.FRONT;
 
 /*
  * This is an example of a more complex path to really test the tuning.
  */
 @Config
-@Autonomous (name = "Autonomous2021")
+@Autonomous (name = "Autonomous2021_OUTDATED")
 public class Autonomous2021 extends LinearOpMode {
     //Configurables
     public static int visionEnabled = 1; //Stand in for boolean

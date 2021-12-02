@@ -1,16 +1,14 @@
-package org.firstinspires.ftc.teamcode.drive.autonomous.opmodes;
+package org.firstinspires.ftc.teamcode.drive.autonomous.opmodes2021;
 
-import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.acmerobotics.roadrunner.trajectory.Trajectory;
-import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 import java.util.ArrayList;
 
 import static java.lang.Math.PI;
 import static java.lang.Math.atan;
 
-@Autonomous
-public class TwoWobbleGoalPreload extends Autonomous2021{
+//@Autonomous
+public class TwoWobbleGoalAndShootPreload extends Autonomous2021{
     @Override
     public void runOpMode() throws InterruptedException {
         initializeRobot();
@@ -40,10 +38,13 @@ public class TwoWobbleGoalPreload extends Autonomous2021{
         pickUpWobbleGoal();
         drive.turn(PI);
         trajectories.addAll(doWobbleGoalAfterPickup(drive.getPoseEstimate()));
-        trajectories.addAll(oneWobbleGoal(trajectories.get(trajectories.size()-1).end().vec()));
+        trajectories.addAll(oneWobbleGoalAndShoot(trajectories.get(trajectories.size()-1).end().vec()));
         drive.followTrajectory(trajectories.get(4));
         dropOffWobbleGoal();
         drive.followTrajectory(trajectories.get(5));
+        drive.turn(Math.toRadians(-90.0)); //theoretically 90 deg
+        shootRings();
+        drive.followTrajectory(trajectories.get(6));
         drive.setMotorPowers(0,0,0,0);
     }
 }

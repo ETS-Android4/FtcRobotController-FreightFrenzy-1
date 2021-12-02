@@ -1,9 +1,6 @@
-package org.firstinspires.ftc.teamcode.drive.autonomous.opmodes;
+package org.firstinspires.ftc.teamcode.drive.autonomous.opmodes2021;
 
-import com.acmerobotics.roadrunner.geometry.Vector2d;
-import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-
-@Autonomous
+//@Autonomous
 public class RingDetect extends Autonomous2021{
     @Override
     public void runOpMode() throws InterruptedException {

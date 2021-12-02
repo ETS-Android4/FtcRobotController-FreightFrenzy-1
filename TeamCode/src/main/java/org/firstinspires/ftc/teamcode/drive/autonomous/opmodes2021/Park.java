@@ -1,14 +1,8 @@
-package org.firstinspires.ftc.teamcode.drive.autonomous.opmodes;
+package org.firstinspires.ftc.teamcode.drive.autonomous.opmodes2021;
 
-import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.acmerobotics.roadrunner.geometry.Vector2d;
-import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorEx;
 
-import org.firstinspires.ftc.teamcode.drive.MecanumDrivetrain;
-
-@Autonomous (name = "Park")
+//@Autonomous (name = "Park_OUTDATED")
 public class Park extends Autonomous2021{
     @Override
     public void runOpMode() throws InterruptedException {
