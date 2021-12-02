@@ -15,7 +15,13 @@
 apply from: '../build.common.gradle'
 apply from: '../build.dependencies.gradle'
 
+repositories {
+    maven { url = "https://dl.bintray.com/first-tech-challenge/ftcsdk/" }
+    maven { url = 'https://maven.brott.dev/' }
+}
+
 dependencies {
     implementation project(':FtcRobotController')
+    implementation project(path: ':openCVLibrary343')
     annotationProcessor files('lib/OpModeAnnotationProcessor.jar')
 }
