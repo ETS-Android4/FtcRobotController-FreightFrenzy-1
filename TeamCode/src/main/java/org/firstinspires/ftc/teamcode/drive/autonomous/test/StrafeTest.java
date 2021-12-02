@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.drive.autonomous;
+package org.firstinspires.ftc.teamcode.drive.autonomous.test;
 
 import com.acmerobotics.dashboard.config.Config;
 import com.acmerobotics.roadrunner.geometry.Pose2d;
@@ -13,15 +13,15 @@ import org.firstinspires.ftc.teamcode.drive.MecanumDrivetrain;
  */
 @Config
 @Autonomous(group = "drive")
-public class StraightTest extends LinearOpMode {
-    public static double DISTANCE = 10; // in
+public class StrafeTest extends LinearOpMode {
+    public static double DISTANCE = 60; // in
 
     @Override
     public void runOpMode() throws InterruptedException {
         MecanumDrivetrain drive = new MecanumDrivetrain(hardwareMap);
 
         Trajectory trajectory = drive.trajectoryBuilder(new Pose2d())
-                .forward(DISTANCE)
+                .strafeRight(DISTANCE)
                 .build();
 
         waitForStart();
