@@ -22,7 +22,7 @@ import org.opencv.core.Mat;
 //import static org.firstinspires.ftc.teamcode.BuildConfig.DEBUG;
 
 @Config
-@TeleOp(name = "gary")
+@TeleOp(name = "gary_OUTDATED")
 public class gary extends LinearOpMode {
     MecanumDrivetrain drive;
     FtcDashboard dashboard;
@@ -125,65 +125,65 @@ public class gary extends LinearOpMode {
 
 
         while (opModeIsActive()) {
-            double turn = 0.0;
-            double indivTurn = 0.0;
-            if (gamepad1.left_bumper) {
-               turn += turnPower;
-               indivTurn += indivTurnPower;
-            }
-            if (gamepad1.right_bumper){
-               turn -= turnPower;
-               indivTurn -= indivTurnPower;
-            }
-            if (gamepad1.dpad_left){
-                startAutomatePowershots(DSrf, DSrr);
-            }
-            if(mkParallelState==0){
-                vectorCombineRoadrunner(gamepad1.left_stick_x, gamepad1.left_stick_y, turn, indivTurn);
-            }
+        double turn = 0.0;
+        double indivTurn = 0.0;
+        if (gamepad1.left_bumper) {
+            turn += turnPower;
+            indivTurn += indivTurnPower;
+        }
+        if (gamepad1.right_bumper){
+            turn -= turnPower;
+            indivTurn -= indivTurnPower;
+        }
+        if (gamepad1.dpad_left){
+            startAutomatePowershots(DSrf, DSrr);
+        }
+        if(mkParallelState==0){
+            vectorCombineRoadrunner(gamepad1.left_stick_x, gamepad1.left_stick_y, turn, indivTurn);
+        }
 
-            if (gamepad2.left_trigger > 0.1) {
-                in_front.setPower(-1);
-                in_back.setPower(-1);
-            }
-            if (gamepad2.right_trigger > 0.1) {
-                in_front.setPower(1);
-                in_back.setPower(1);
-            }
+        if (gamepad2.left_trigger > 0.1) {
+            in_front.setPower(-1);
+            in_back.setPower(-1);
+        }
+        if (gamepad2.right_trigger > 0.1) {
+            in_front.setPower(1);
+            in_back.setPower(1);
+        }
 
-            if (gamepad2.y) {
-                wobbleGoal.setPower(1);
-            }
-            if (gamepad2.x) {
-                wobbleGoal.setPower(-1);
-            }
-            if (gamepad2.right_bumper) {
-                shooter.setPower(-0.8);
+        if (gamepad2.y) {
+            wobbleGoal.setPower(1);
+        }
+        if (gamepad2.x) {
+            wobbleGoal.setPower(-1);
+        }
+        if (gamepad2.right_bumper) {
+            shooter.setPower(-0.8);
 
-            }
-            if (gamepad2.left_bumper) {
-                shooter.setPower(0);
+        }
+        if (gamepad2.left_bumper) {
+            shooter.setPower(0);
 
-            }
-            if (gamepad2.dpad_left) {
-                wobbleGrab.setPosition(0);
+        }
+        if (gamepad2.dpad_left) {
+            wobbleGrab.setPosition(0);
 
-            }
-            if (gamepad2.dpad_right) {
-                wobbleGrab.setPosition(1);
+        }
+        if (gamepad2.dpad_right) {
+            wobbleGrab.setPosition(1);
 
-            }
+        }
 
-            wobbleGoal.setPower(0);
-            in_front.setPower(0);
-            in_back.setPower(0);
-            telemetry.addData("shooter power: ", shooter.getPower());
-            //telemetry.addData("odoPose", drive.getPoseEstimate().toString());
-            telemetry.addData("lf", dsValues);
-            //telemetry.addData("dsPose", lastDSPose.toString());
-            telemetry.update();
-            drive.update();//comment this out during real runs
-            endAutomatePowershots(DSrf, 10);
+        wobbleGoal.setPower(0);
+        in_front.setPower(0);
+        in_back.setPower(0);
+        telemetry.addData("shooter power: ", shooter.getPower());
+        //telemetry.addData("odoPose", drive.getPoseEstimate().toString());
+        telemetry.addData("lf", dsValues);
+        //telemetry.addData("dsPose", lastDSPose.toString());
+        telemetry.update();
+        drive.update();//comment this out during real runs
+        endAutomatePowershots(DSrf, 10);
 //            if (time>=timePoint){
 //                //lastDSPose = drive.getDSPoseEstimate();
 //                dsValues =
@@ -194,8 +194,8 @@ public class gary extends LinearOpMode {
 //                telemetry.update();
 //                timePoint = time+updateRate;
 //            }
-        }
     }
+}
     }
 
 

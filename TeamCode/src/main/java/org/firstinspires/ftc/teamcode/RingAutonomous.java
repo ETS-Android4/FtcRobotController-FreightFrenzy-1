@@ -9,7 +9,7 @@ import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.har
 import static org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer.CameraDirection.BACK;
 import static org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer.CameraDirection.FRONT;
 
-@Autonomous(name = "RingAutonomous")
+@Autonomous(name = "RingAutonomous_OUTDATED")
 public class RingAutonomous extends
         gary {
 
