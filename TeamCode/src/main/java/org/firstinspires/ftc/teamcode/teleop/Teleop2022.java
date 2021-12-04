@@ -25,34 +25,25 @@ public class Teleop2022 extends LinearOpMode {
 
     MecanumDrivetrain drive;
     FtcDashboard dashboard;
-    DcMotor in_front;
-    DcMotor in_back;
-    DcMotor wobbleGoal;
+
     DcMotor rightFront;
     DcMotor leftFront;
     DcMotor rightBack;
     DcMotor leftBack;
-    DcMotor shooter;
-    Servo wobbleGrab;
+
+    DcMotor carousel;
+    DcMotor intake;
+    DcMotor capstoneLift;
+    DcMotor outtakeLift;
+
+    Servo capstoneServo;
+    Servo outtakeServo;
+    Servo odoY;
+    Servo odoX;
 
     double basePower = 0.6;
     double turnPower = 0.2;
     double indivTurnPower = 0.5;
-
-    //Vector Combine
-    public void vectorCombineRoadrunner(double x, double y, double turn, double indivTurn) {
-        double a = y - x;
-        double b = y + x;
-
-        double scalar = basePower /  Math.max(Math.abs(a), Math.abs(b));
-
-        if(a!=0 || b!=0) {
-            a *= scalar; b *= scalar;
-            drive.setMotorPowers(a + turn, b + turn, a - turn, b - turn);
-        }else{
-            drive.setMotorPowers(indivTurn, indivTurn, -indivTurn, -indivTurn);
-        }
-    }
 
     public void initialize() {
         //Roadrunner Configuration
@@ -77,13 +68,31 @@ public class Teleop2022 extends LinearOpMode {
         rightBack.setDirection(DcMotorSimple.Direction.FORWARD);
 
         //DC Motors
-        in_front = hardwareMap.dcMotor.get("in_front");
-        in_back = hardwareMap.dcMotor.get("in_back");
-        wobbleGoal = hardwareMap.dcMotor.get("WobbleGoal");
-        shooter = hardwareMap.dcMotor.get("Launch");
+        intake = hardwareMap.dcMotor.get("intake");
+        carousel = hardwareMap.dcMotor.get("carousel");
+        outtakeLift = hardwareMap.dcMotor.get("outtakeLift");
+        capstoneLift = hardwareMap.dcMotor.get("capstoneLift");
 
         //Servos
-        wobbleGrab = hardwareMap.servo.get("wobbleGrab");
+        outtakeServo = hardwareMap.servo.get("outtakeServo");
+        capstoneServo = hardwareMap.servo.get("capstoneServo");
+        odoY = hardwareMap.servo.get("odoY");
+        odoX = hardwareMap.servo.get("odoX");
+    }
+
+    //Vector Combine
+    public void vectorCombineRoadrunner(double x, double y, double turn, double indivTurn) {
+        double a = y - x;
+        double b = y + x;
+
+        double scalar = basePower /  Math.max(Math.abs(a), Math.abs(b));
+
+        if(a!=0 || b!=0) {
+            a *= scalar; b *= scalar;
+            drive.setMotorPowers(a + turn, b + turn, a - turn, b - turn);
+        }else{
+            drive.setMotorPowers(indivTurn, indivTurn, -indivTurn, -indivTurn);
+        }
     }
 
     @Override
@@ -115,32 +124,32 @@ public class Teleop2022 extends LinearOpMode {
         //Gamepad 1
 
         //Gamepad 2
-        if (gamepad2.left_trigger > 0.1) {
-            in_front.setPower(-1);
-            in_back.setPower(-1);
-        }
-        if (gamepad2.right_trigger > 0.1) {
-            in_front.setPower(1);
-            in_back.setPower(1);
-        }
-        if (gamepad2.y) {
-            wobbleGoal.setPower(1);
-        }
-        if (gamepad2.x) {
-            wobbleGoal.setPower(-1);
-        }
-        if (gamepad2.right_bumper) {
-            shooter.setPower(-0.8);
-        }
-        if (gamepad2.left_bumper) {
-            shooter.setPower(0);
-        }
-        if (gamepad2.dpad_left) {
-            wobbleGrab.setPosition(0);
-        }
-        if (gamepad2.dpad_right) {
-            wobbleGrab.setPosition(1);
-        }
+//        if (gamepad2.left_trigger > 0.1) {
+//            in_front.setPower(-1);
+//            in_back.setPower(-1);
+//        }
+//        if (gamepad2.right_trigger > 0.1) {
+//            in_front.setPower(1);
+//            in_back.setPower(1);
+//        }
+//        if (gamepad2.y) {
+//            wobbleGoal.setPower(1);
+//        }
+//        if (gamepad2.x) {
+//            wobbleGoal.setPower(-1);
+//        }
+//        if (gamepad2.right_bumper) {
+//            shooter.setPower(-0.8);
+//        }
+//        if (gamepad2.left_bumper) {
+//            shooter.setPower(0);
+//        }
+//        if (gamepad2.dpad_left) {
+//            wobbleGrab.setPosition(0);
+//        }
+//        if (gamepad2.dpad_right) {
+//            wobbleGrab.setPosition(1);
+//        }
     }
 
     public void updateTelemetry(){

@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.drive.autonomous.test;
+package org.firstinspires.ftc.teamcode.drive.tests;
 
 import com.acmerobotics.dashboard.FtcDashboard;
 import com.acmerobotics.dashboard.config.Config;

@@ -1,12 +1,9 @@
-package org.firstinspires.ftc.teamcode.drive.autonomous.distancesensor;
+package org.firstinspires.ftc.teamcode.drive.tests.distancesensor;
 
 import com.acmerobotics.roadrunner.geometry.Pose2d;
-import com.qualcomm.hardware.rev.Rev2mDistanceSensor;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DistanceSensor;
-import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.hardware.I2cDeviceSynch;
 
 import java.util.HashMap;
 

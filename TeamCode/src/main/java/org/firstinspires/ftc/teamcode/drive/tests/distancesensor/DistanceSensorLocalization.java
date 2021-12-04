@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.drive.autonomous.distancesensor;
+package org.firstinspires.ftc.teamcode.drive.tests.distancesensor;
 
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.acmerobotics.roadrunner.geometry.Vector2d;
@@ -11,8 +11,6 @@ import java.util.HashMap;
 
 import static java.lang.Math.PI;
 import static java.lang.Math.abs;
-import static java.lang.Math.cos;
-import static java.lang.Math.tan;
 
 public class DistanceSensorLocalization {
     HashMap<DistanceSensor, Pose2d> dsDict;

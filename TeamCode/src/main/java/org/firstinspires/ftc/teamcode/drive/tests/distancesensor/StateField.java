@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.drive.autonomous.distancesensor;
+package org.firstinspires.ftc.teamcode.drive.tests.distancesensor;
 
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.acmerobotics.roadrunner.geometry.Vector2d;
@@ -6,8 +6,6 @@ import com.acmerobotics.roadrunner.geometry.Vector2d;
 import java.util.HashMap;
 
 import kotlin.Pair;
-
-import static org.firstinspires.ftc.teamcode.drive.autonomous.distancesensor.DistanceSensorLocalization.modularAngle;
 
 public class StateField {
     HashMap<WallType, Pair<Double, Double>> stateLines = new HashMap<>();

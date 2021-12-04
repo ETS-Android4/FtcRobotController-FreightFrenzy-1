@@ -23,5 +23,6 @@ repositories {
 dependencies {
     implementation project(':FtcRobotController')
     implementation project(path: ':openCVLibrary343')
+    implementation project(path: ':RoadrunnerTrajectories')
     annotationProcessor files('lib/OpModeAnnotationProcessor.jar')
 }
