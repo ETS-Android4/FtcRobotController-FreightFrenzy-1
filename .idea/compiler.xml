@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <bytecodeTargetLevel>
+    <bytecodeTargetLevel target="1.7">
+      <module name="FtcRobotController-FreightFrenzy-UPDATED.FtcRobotController" target="1.8" />
+      <module name="FtcRobotController-FreightFrenzy-UPDATED.openCVLibrary343" target="1.8" />
+      <module name="FtcRobotController-FreightFrenzy-UPDATED.TeamCode" target="1.8" />
       <module name="RoadrunnerTrajectories" target="1.7" />
     </bytecodeTargetLevel>
   </component>

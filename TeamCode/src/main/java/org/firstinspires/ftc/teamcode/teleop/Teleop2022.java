@@ -16,7 +16,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.ServoController;
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.firstinspires.ftc.teamcode.drive.MecanumDrivetrain;
-import org.opencv.core.Mat;
+
 
 @Config
 @TeleOp(name = "Teleop2022")
@@ -28,8 +28,8 @@ public class Teleop2022 extends LinearOpMode {
 
     DcMotor rightFront;
     DcMotor leftFront;
-    DcMotor rightBack;
-    DcMotor leftBack;
+    DcMotor rightRear;
+    DcMotor leftRear;
 
     DcMotor carousel;
     DcMotor intake;
@@ -59,13 +59,13 @@ public class Teleop2022 extends LinearOpMode {
         //Drive Motors
         rightFront = hardwareMap.dcMotor.get("rightFront");
         leftFront = hardwareMap.dcMotor.get("leftFront");
-        rightBack = hardwareMap.dcMotor.get("rightRear");
-        leftBack = hardwareMap.dcMotor.get("leftRear");
+        rightRear = hardwareMap.dcMotor.get("rightRear");
+        leftRear = hardwareMap.dcMotor.get("leftRear");
 
         leftFront.setDirection(DcMotorSimple.Direction.REVERSE);
-        leftBack.setDirection(DcMotorSimple.Direction.REVERSE);
+        leftRear.setDirection(DcMotorSimple.Direction.REVERSE);
         rightFront.setDirection(DcMotorSimple.Direction.FORWARD);
-        rightBack.setDirection(DcMotorSimple.Direction.FORWARD);
+        rightRear.setDirection(DcMotorSimple.Direction.FORWARD);
 
         //DC Motors
         intake = hardwareMap.dcMotor.get("intake");
@@ -121,35 +121,45 @@ public class Teleop2022 extends LinearOpMode {
     }
 
     public void updateGamepadControl(){
+        if(gamepad2.dpad_left) {
+            intake.setPower(0.1);
+        } else if (gamepad2.dpad_right){
+            intake.setPower(-0.1);
+        }
+        if(gamepad2.x){
+            outtakeLift.setPower(0.1);
+        } else if (gamepad2.y) {
+            outtakeLift.setPower(-0.1);
+        }
+        if(gamepad2.dpad_up){
+            outtakeServo.setPosition(0.5);
+        } else if (gamepad2.dpad_down) {
+            outtakeServo.setPosition(-0.5);
+        }
+        if (gamepad1.dpad_up) {
+            capstoneLift.setPower(0.1);
+        } else if (gamepad1.dpad_down){
+            capstoneLift.setPower(-0.1);
+        }
+        if (gamepad1.x){
+            capstoneServo.setPosition(0.5);
+        } else if (gamepad1.y){
+            capstoneServo.setPosition(-0.5);
+        }
         //Gamepad 1
-
+//     dpad left = intake back
+//                dpad right = intake fwd
+//                x = lift up
+//                y = lift down
+//                dpad up = outtake servo up
+//                dpad down = outtake servo down
+//
+//                dpad up gamepad 1 = capstone up
+//                dpad down gamepad 1 = capstone down
+//                x game pad 1 = capstoneServo up
+//                y game pad 1 = capstoneServo down
         //Gamepad 2
-//        if (gamepad2.left_trigger > 0.1) {
-//            in_front.setPower(-1);
-//            in_back.setPower(-1);
-//        }
-//        if (gamepad2.right_trigger > 0.1) {
-//            in_front.setPower(1);
-//            in_back.setPower(1);
-//        }
-//        if (gamepad2.y) {
-//            wobbleGoal.setPower(1);
-//        }
-//        if (gamepad2.x) {
-//            wobbleGoal.setPower(-1);
-//        }
-//        if (gamepad2.right_bumper) {
-//            shooter.setPower(-0.8);
-//        }
-//        if (gamepad2.left_bumper) {
-//            shooter.setPower(0);
-//        }
-//        if (gamepad2.dpad_left) {
-//            wobbleGrab.setPosition(0);
-//        }
-//        if (gamepad2.dpad_right) {
-//            wobbleGrab.setPosition(1);
-//        }
+
     }
 
     public void updateTelemetry(){
