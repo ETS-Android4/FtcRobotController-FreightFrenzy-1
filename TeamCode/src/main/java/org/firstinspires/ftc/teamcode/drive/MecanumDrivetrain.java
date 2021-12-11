@@ -156,10 +156,10 @@ public class MecanumDrivetrain extends MecanumDrive {
 
         HashMap<DistanceSensor, Pose2d> distanceSensors = new HashMap<>();
 
-        distanceSensors.put(hardwareMap.get(DistanceSensor.class, "DS_rightFront"), new Pose2d(3.0,-7.0,-PI/2));
-        distanceSensors.put(hardwareMap.get(DistanceSensor.class, "DS_rightRear"), new Pose2d(-3.0,-7.0,-PI/2));
-        distanceSensors.put(hardwareMap.get(DistanceSensor.class, "DS_leftFront"), new Pose2d(3.0,7.0,PI/2));
-        distanceSensors.put(hardwareMap.get(DistanceSensor.class, "DS_leftRear"), new Pose2d(-3.0,7.0,PI/2));
+//        distanceSensors.put(hardwareMap.get(DistanceSensor.class, "DS_rightFront"), new Pose2d(3.0,-7.0,-PI/2));
+//        distanceSensors.put(hardwareMap.get(DistanceSensor.class, "DS_rightRear"), new Pose2d(-3.0,-7.0,-PI/2));
+//        distanceSensors.put(hardwareMap.get(DistanceSensor.class, "DS_leftFront"), new Pose2d(3.0,7.0,PI/2));
+//        distanceSensors.put(hardwareMap.get(DistanceSensor.class, "DS_leftRear"), new Pose2d(-3.0,7.0,PI/2));
 
         dsl = new DistanceSensorLocalization(distanceSensors, 72.0, -72.0, 72.0, -24.0);
 

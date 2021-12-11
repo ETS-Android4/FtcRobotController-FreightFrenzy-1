@@ -38,7 +38,8 @@ public class Teleop2022 extends LinearOpMode {
 
     Servo capstoneServo;
     Servo outtakeServo;
-    Servo odoY;
+    Servo odoY1;
+    Servo odoY2;
     Servo odoX;
 
     double basePower = 0.6;
@@ -76,7 +77,8 @@ public class Teleop2022 extends LinearOpMode {
         //Servos
         outtakeServo = hardwareMap.servo.get("outtakeServo");
         capstoneServo = hardwareMap.servo.get("capstoneServo");
-        odoY = hardwareMap.servo.get("odoY");
+        odoY1 = hardwareMap.servo.get("odoY1");
+        odoY2 = hardwareMap.servo.get("odoY2");
         odoX = hardwareMap.servo.get("odoX");
     }
 
@@ -121,30 +123,45 @@ public class Teleop2022 extends LinearOpMode {
     }
 
     public void updateGamepadControl(){
+        //gamepad 1
         if(gamepad2.dpad_left) {
-            intake.setPower(0.1);
+            intake.setPower(0.5);
         } else if (gamepad2.dpad_right){
-            intake.setPower(-0.1);
+            intake.setPower(-0.5);
+        } else {
+            intake.setPower(0.0);
         }
         if(gamepad2.x){
-            outtakeLift.setPower(0.1);
+            outtakeLift.setPower(0.5);
         } else if (gamepad2.y) {
-            outtakeLift.setPower(-0.1);
+            outtakeLift.setPower(-0.5);
+        } else {
+            outtakeLift.setPower(0.0);
         }
         if(gamepad2.dpad_up){
-            outtakeServo.setPosition(0.5);
+            outtakeServo.setPosition(1.0);
         } else if (gamepad2.dpad_down) {
-            outtakeServo.setPosition(-0.5);
+            outtakeServo.setPosition(0.0);
         }
+        //gamepad 1
         if (gamepad1.dpad_up) {
-            capstoneLift.setPower(0.1);
+            capstoneLift.setPower(0.5);
         } else if (gamepad1.dpad_down){
-            capstoneLift.setPower(-0.1);
+            capstoneLift.setPower(-0.5);
+        } else {
+            capstoneLift.setPower(0.0);
         }
         if (gamepad1.x){
-            capstoneServo.setPosition(0.5);
+            capstoneServo.setPosition(1.0);
         } else if (gamepad1.y){
-            capstoneServo.setPosition(-0.5);
+            capstoneServo.setPosition(0.0);
+        }
+        if (gamepad1.dpad_left){
+            carousel.setPower(0.5);
+        } else if (gamepad1.dpad_right) {
+            carousel.setPower(-0.5);
+        } else {
+            carousel.setPower(0.0);
         }
         //Gamepad 1
 //     dpad left = intake back
