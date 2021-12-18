@@ -14,12 +14,14 @@ import java.util.List;
 public class DepositPark_Iter1_Blue extends Autonomous2022 {
     @Override
     public void auto(){
+        lowerOdometry();
         List<Trajectory> trajectories = new DepositPark_Iter1(false).build();
         detectState();
         drive.followTrajectory(trajectories.get(0)); //Go to Carousel
         dropDuck();
         drive.followTrajectory(trajectories.get(1)); //Go to Deposit
         depositFreight();
+        raiseOdometry();
         drive.followTrajectory(trajectories.get(2)); //Park
     }
 }
