@@ -78,7 +78,7 @@ public class Teleop2022 extends LinearOpMode {
         capstoneLift = hardwareMap.dcMotor.get("capstoneLift");
 
         //Servos
-        intakeServo = hardwareMap.servo.get("intakeServo")
+        intakeServo = hardwareMap.servo.get("intakeServo");
         outtakeServo = hardwareMap.servo.get("outtakeServo");
         capstoneServo = hardwareMap.servo.get("capstoneServo");
         odoY1 = hardwareMap.servo.get("odoY1");
@@ -144,11 +144,11 @@ public class Teleop2022 extends LinearOpMode {
         if(gamepad2.x){ //down
             repositionOuttake();
             triggerIntakeLock();
-            outtakeLift.setPower(0.8);
+            outtakeLift.setPower(-0.3);
         } else if (gamepad2.y) { //up
             secureOuttake();
             triggerIntakeLock();
-            outtakeLift.setPower(-0.8);
+            outtakeLift.setPower(0.3);
         } else {
             outtakeLift.setPower(0.0);
         }
@@ -205,13 +205,13 @@ public class Teleop2022 extends LinearOpMode {
         intakeLock = false;
     }
     private void secureOuttake(){
-
+        outtakeServo.setPosition(0.0);
     }
     private void repositionOuttake(){
-
+        outtakeServo.setPosition(0.1);
     }
     private void depositOuttake(){
-
+        outtakeServo.setPosition(0.5);
     }
     //TODO: update with new odo system
     private void raiseOdo(){
