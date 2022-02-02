@@ -23,7 +23,7 @@ import org.firstinspires.ftc.teamcode.drive.MecanumDrivetrain;
 public class Teleop2022 extends LinearOpMode {
     static boolean dashboardEnabled = true;
 
-    MecanumDrivetrain drive;
+    public MecanumDrivetrain drive;
     FtcDashboard dashboard;
 
     DcMotor rightFront;
@@ -48,6 +48,7 @@ public class Teleop2022 extends LinearOpMode {
     double indivTurnPower = 0.5;
 
     boolean intakeLock = false;
+    boolean liftPowerOff = true;
 
     public void initialize() {
         //Roadrunner Configuration
@@ -66,16 +67,13 @@ public class Teleop2022 extends LinearOpMode {
         rightRear = hardwareMap.dcMotor.get("rightRear");
         leftRear = hardwareMap.dcMotor.get("leftRear");
 
-        leftFront.setDirection(DcMotorSimple.Direction.REVERSE);
-        leftRear.setDirection(DcMotorSimple.Direction.REVERSE);
-        rightFront.setDirection(DcMotorSimple.Direction.FORWARD);
-        rightRear.setDirection(DcMotorSimple.Direction.FORWARD);
-
         //DC Motors
         intake = hardwareMap.dcMotor.get("intake");
         carousel = hardwareMap.dcMotor.get("carousel");
         outtakeLift = hardwareMap.dcMotor.get("outtakeLift");
         capstoneLift = hardwareMap.dcMotor.get("capstoneLift");
+
+        outtakeLift.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         //Servos
         intakeServo = hardwareMap.servo.get("intakeServo");
@@ -146,19 +144,21 @@ public class Teleop2022 extends LinearOpMode {
             triggerIntakeLock();
             outtakeLift.setPower(-0.3);
         } else if (gamepad2.y) { //up
-            secureOuttake();
+            repositionOuttake();
             triggerIntakeLock();
             outtakeLift.setPower(0.3);
         } else {
-            outtakeLift.setPower(0.0);
+            if(liftPowerOff){
+                outtakeLift.setPower(0.0);
+            }
         }
         //deposit
         if(gamepad2.dpad_up){
             depositOuttake();
         } else if (gamepad2.dpad_down) {
             repositionOuttake();
-        } else if (gamepad2.left_stick_button){
-            secureOuttake();
+        } else if (gamepad2.dpad_left){
+            readyOuttake();
         }
         //Capstone
         if (gamepad1.y) {
@@ -174,16 +174,23 @@ public class Teleop2022 extends LinearOpMode {
             capstoneServo.setPosition(0.5);
         }
         //Odometry raise/lower
-        if (gamepad1.right_trigger>0.1){ //down
+        if (gamepad1.dpad_down){ //down
             lowerOdo();
-        } else if (gamepad1.left_trigger>0.1) { // up
+        } else if (gamepad1.dpad_up) { // up
             raiseOdo();
+        }
+        if (gamepad1.left_trigger>0.1 || gamepad1.right_trigger>0.1){
+            basePower = 0.4;
+            indivTurnPower = 0.3;
+        } else {
+            basePower = 0.8;
+            indivTurnPower = 0.5;
         }
         //DEBUG
         if (gamepad2.left_trigger>0.1){
-            leftFront.setPower(0.5);
+            autoDrop();
         } else if (gamepad2.right_trigger>0.1){
-            rightFront.setPower(0.5);
+            autoRise();
         }
         //Carousel
         if (gamepad1.dpad_left){
@@ -194,6 +201,40 @@ public class Teleop2022 extends LinearOpMode {
             carousel.setPower(0.0);
         }
 
+
+    }
+
+    private void autoDrop(){
+        Runnable run = new Runnable() {
+            @Override
+            public void run() {
+                depositOuttake();
+                sleep(500);
+                readyOuttake();
+            }
+        };
+        Thread t = new Thread(run);
+        t.start();
+    }
+
+    private void autoRise(){
+        Runnable run = new Runnable() {
+            @Override
+            public void run() {
+                triggerIntakeLock();
+                sleep(250);
+                depositOuttake();
+                sleep(750);
+                liftPowerOff = false;
+                repositionOuttake();
+                outtakeLift.setPower(0.3);
+                sleep(500);
+                readyOuttake();
+                liftPowerOff = true;
+            }
+        };
+        Thread t = new Thread(run);
+        t.start();
     }
 
     private void triggerIntakeLock(){
@@ -204,25 +245,25 @@ public class Teleop2022 extends LinearOpMode {
         intakeServo.setPosition(0.0);
         intakeLock = false;
     }
-    private void secureOuttake(){
-        outtakeServo.setPosition(0.0);
-    }
     private void repositionOuttake(){
-        outtakeServo.setPosition(0.1);
+        outtakeServo.setPosition(0.05);
     }
     private void depositOuttake(){
         outtakeServo.setPosition(0.5);
     }
+    private void readyOuttake(){
+        outtakeServo.setPosition(0.2);
+    }
     //TODO: update with new odo system
     private void raiseOdo(){
-        odoX.setPosition(0.5);
+        odoX.setPosition(0.9);
         odoY1.setPosition(0.0);
         odoY2.setPosition(1.0);
     }
     private void lowerOdo(){
-        odoX.setPosition(0.9);
+        odoX.setPosition(0.6);
         odoY1.setPosition(0.96);
-        odoY2.setPosition(0.85);
+        odoY2.setPosition(0.0);
     }
 
     public void updateTelemetry(){

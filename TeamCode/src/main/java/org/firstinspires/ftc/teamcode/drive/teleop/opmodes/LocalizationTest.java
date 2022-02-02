@@ -5,6 +5,7 @@ import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.teamcode.drive.MecanumDrivetrain;
 
@@ -22,7 +23,10 @@ public class LocalizationTest extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
         MecanumDrivetrain drive = new MecanumDrivetrain(hardwareMap);
 
-        drive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        Servo odoX = hardwareMap.servo.get("odoX");
+        odoX.setPosition(0.6); //lowers back odo //scuffed
+
+//        drive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         waitForStart();
 

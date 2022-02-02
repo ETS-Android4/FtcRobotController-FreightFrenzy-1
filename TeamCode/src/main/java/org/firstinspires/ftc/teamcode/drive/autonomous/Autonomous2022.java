@@ -115,13 +115,13 @@ public abstract class Autonomous2022 extends LinearOpMode {
         sleep(3000);
     }
     protected void raiseOdometry(){
-        odoX.setPosition(1.0);
-        odoY1.setPosition(1.0);
+        odoX.setPosition(0.9);
+        odoY1.setPosition(0.0);
         odoY2.setPosition(1.0);
     }
     protected void lowerOdometry(){
-        odoX.setPosition(0.0);
-        odoY1.setPosition(0.0);
+        odoX.setPosition(0.6);
+        odoY1.setPosition(0.96);
         odoY2.setPosition(0.0);
     }
 }
